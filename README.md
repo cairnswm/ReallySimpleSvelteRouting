@@ -23,7 +23,7 @@ npm run dev
 
 ## Page Layout
 Our page layout is going to be a simple two column layout with the menu in the left hand column and the right hand column will be used to display the content for the menu option chosen. A CSS framework could be used for the columns, but for this tutorial we will stay with custom CSS classes instead of creating a dependency on a third part library.
-In the main page add the following styles. Svelte allows styles to be applied per component.
+In the App.svelte page add the following styles. Svelte allows styles to be applied per component.
 
 ```css
 <style>
@@ -72,13 +72,19 @@ Let us add a menu in the left hand column using anchor links, replace the text i
 
 This menu uses Location hashes to define the page to be display. When the user click s a menu option the page URL will update to include the hash value. We will then get the hash value from the URL, and based on the selected menu option we will display the relevant page
 Get the menu selection
-To get the menu selection we need to get the page from the current page .
+To get the menu selection we need to get the page from the current page.
+```javascript
+<script>
 let page = document.location.hash;
+</script>
+```
 
 This will extract the page hash from the URL, but we also need to get the page whenever it changes such as when the user selects a menu option
+```javascript
 window.onpopstate = function(event) {
         page = document.location.hash;
     };
+```
 
 Now the current location hash is in our page variable both when the user accesses our page with an existing hash value (such as from a bookmark) and when the user clicks one of the menu options.
 
@@ -105,14 +111,16 @@ Create a new component called red.svelte. Add the following to the component
 
 ```html
 <div>
-<h1>This is the Red page</h1>
-<a href=”#green”>Change to Green Page</a>
-<div>
+    <h1>This is the Red page</h1>
+    <a href=”#green”>Change to Green Page</a>
+</div>
+
 <style>
 div {
-background: red;
-color: white;
+    background: red;
+    color: white;
 }
+</style>
 ```
 
 Now replace the “Red page” text in the main page with <Red /> (remember to import the red page into the file).
