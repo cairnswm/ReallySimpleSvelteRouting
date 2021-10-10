@@ -64,10 +64,10 @@ If you are running the development server you should now see the two column disp
 ## Create a Menu
 Let us add a menu in the left hand column using anchor links, replace the text in the first column with our menu
 ```html
-            <h1>Menu</h1>
-            <a href="#home">Home</a>
-            <a href="#red">Red Page</a>
-            <a href="#green">Green Page</a>
+<h1>Menu</h1>
+<a href="#home">Home</a>
+<a href="#red">Red Page</a>
+<a href="#green">Green Page</a>
 ```
 
 This menu uses Location hashes to define the page to be display. When the user click s a menu option the page URL will update to include the hash value. We will then get the hash value from the URL, and based on the selected menu option we will display the relevant page
@@ -92,15 +92,15 @@ Now the current location hash is in our page variable both when the user accesse
 Based on the page variable we now want to change the content in the right hand pane based on the page that was selected. Replace the Content column contents with this script
 
 ```html
-            {#if page==="#home"}
-              Home Page
-            {:else if page === "#red"}
-              Red page
-            {:else if page === "#green"}
-              Green page
-            {:else}
-              404: Page not Found
-            {/if}
+{#if page==="#home"}
+  Home Page
+{:else if page === "#red"}
+  Red page
+{:else if page === "#green"}
+  Green page
+{:else}
+  404: Page not Found
+{/if}
 ```            
 
 In the else section we can choose to show whatever page we want to show. In the example above we show an error page, we could have easily shown the home page, maybe even passing a property through to indicate to the user that the request ed page does not exist
